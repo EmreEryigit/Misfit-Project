@@ -3,6 +3,7 @@ const ejs = require("ejs");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const app = express();
+const pageRoute = require("./routes/pageRoute");
 
 // app.use
 app.set("view engine", "ejs");
@@ -18,9 +19,7 @@ mongoose
     console.log("Connected to MongoDB");
 });
 
-app.get("/", (req, res) => {
-    res.render("index");
-})
+app.use("/", pageRoute)
 
 // server
 const port = 3000
